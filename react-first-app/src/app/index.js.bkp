@@ -1,0 +1,61 @@
+import React from "react";
+import { render } from "react-dom";
+import {Router, Route}  from "react-router";
+
+import { Header } from "./components/Header";
+import { Home } from "./components/Home";
+import { Footer } from "./components/Footer";
+import { FooterStateless } from "./components/FooterStateless";
+
+class App extends React.Component {
+    childFunction() {
+        alert("child fucntion called from parent....");
+    }
+
+    constructor() {
+        super();
+        this.state = {
+            homeMounted : true
+        }
+    }
+    
+    updateHomeMount() {
+        this.setState({
+            homeMounted : !this.state.homeMounted
+        });
+    }
+
+    render() {
+        var data = ["data1", "data2"];
+        var homeCmp = "";
+        if(this.state.homeMounted) {
+            homeCmp = (<Home name={"home"} initialAge={27} 
+                    url={"http://live4others.com/home"} 
+                    data={data}
+                    childFunction={this.childFunction}  >
+                    <p>This is my home children 1</p>
+                    <p>This is my home children 2</p>
+                </Home>
+            );
+        }
+        return(
+            <div>  
+                <div className="col-xs-10 col-xs-offset-1"> 
+                    <Header/>
+                </div>
+                <hr/>
+                <div className="col-xs-10 col-xs-offset-1">
+                    {homeCmp}
+                </div>
+                <div className="container">
+                    <hr/>
+                    <button className="btn btn-primary" onClick={this.updateHomeMount.bind(this)} >(Un)mount home</button>
+                </div>
+                <div className="col-xs-10 col-xs-offset-1">
+                    <FooterStateless copyrightLink="http://live4others.com" />
+                </div>
+            </div>
+        );
+    }
+}
+render(<App/>, window.document.getElementById('app'));
