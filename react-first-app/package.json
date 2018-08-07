@@ -31,6 +31,7 @@
     "react-tabs": "^2.2.2",
     "reactjs-popup": "^1.1.1",
     "style-loader": "^0.21.0",
+    "vis-react": "^0.3.0",
     "webpack-cli": "^3.1.0"
   },
   "devDependencies": {
