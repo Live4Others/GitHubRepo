@@ -1,8 +1,6 @@
 import React from "react";
 import {Tabs, Tab,TabList, TabPanel} from 'react-tabs';
 import  { ProjectOverview } from "./ProjectOverview";
-
-
 import "react-tabs/style/react-tabs.css";
 
 export class ProjectDetails extends React.Component {

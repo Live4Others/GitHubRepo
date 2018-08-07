@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import Graph from 'vis-react';
+import "vis-react/node_modules/vis/dist/vis.css";
 
 var graph = {
     nodes: [
@@ -37,10 +38,40 @@ var graph = {
         font: '12px arial red',
         shadow: true
     },
-    interaction: {
+    interaction:{
+        dragNodes:true,
+        dragView: true,
+        hideEdgesOnDrag: false,
+        hideNodesOnDrag: false,
+        hover: false,
+        hoverConnectedEdges: true,
+        keyboard: {
+          enabled: false,
+          speed: {x: 10, y: 10, zoom: 0.02},
+          bindToWindow: true
+        },
+        multiselect: false,
         navigationButtons: true,
-        keyboard: true
-    }
+        selectable: true,
+        selectConnectedEdges: true,
+        tooltipDelay: 300,
+        zoomView: true
+    },
+    manipulation: {
+        enabled: true,
+        initiallyActive: true,
+        addNode: true,
+        addEdge: true,
+        editNode: function() {
+
+        },
+        editEdge: true,
+        deleteNode: true,
+        deleteEdge: true,
+        controlNodeStyle:{
+          // all node options are valid.
+        }
+      }
 };
 
 var events = {
@@ -97,7 +128,6 @@ export class ProjectOverview extends React.Component {
     }
 
     getNetwork(network) {
-        network.interactionHandler.navigationHandler.navigationButtons = true;
         this.network = network;
         console.log(this.network)
     }
@@ -113,9 +143,7 @@ export class ProjectOverview extends React.Component {
               return nodeOptions.cid === 1;
             }
         };
-        this.network.interactionHandler.navigationHandler.navigationButtons = true;
         console.log(this.network);
-        this.network.redraw();
         //console.log(this.network.clustering.cluster(clusterOptions));
     }
 

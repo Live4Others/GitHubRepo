@@ -25,14 +25,15 @@ var config = {
         rules: [{
             test: /\.js?/,
             include: SRC_DIR,
-           // exclude: SRC_DIR + '/node_modules',
             loader: "babel-loader",
             query: {
                 presets: ["es2015", "react", "stage-2"]
             }
         },{
-            test: /\.css$/,
-            use: [ 'style-loader', 'css-loader' ]
+            test: /(\.css|\.scss)$/,
+            use: [ 'style-loader', 'css-loader' , 'sass-loader']
+        },{ test: /\.(png|eot|ttf|svg)$/, 
+            loader: 'url-loader?limit=100000' 
         }]
     }
 };
