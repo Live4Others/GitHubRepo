@@ -99,35 +99,41 @@ export class Projects extends React.Component {
         }];
         
         var projectDetailsCmp = "";
-        if(this.state.mountProjectDetails) {
-            projectDetailsCmp = <ProjectDetails />
-        }
 
         return (
             <div>
                 <div className="container">
-                    <ReactTable
-                        data={data}
-                        columns={getColumns(this)}
-                        defaultPageSize={10}
-                        className="-striped -highlight"
-                        SubComponent={row => {
-                            return (
-                                <div style={{ padding: "10px" }}>
-                                    <ReactTable
-                                        data={data}
-                                        columns={getColumns(this)}
-                                        showPagination={false}
-                                        defaultPageSize={2}
-                                        className="-striped -highlight"
-                                    />
-                                </div>
-                            );
-                        }}
-                    />
+                    { 
+                        this.state.mountProjectDetails? 
+                        <div className="container">
+                            <img className="btn" src="app/img/back.png" onClick={this.mountProjectDetails.bind(this)}></img>
+                            {/* <button className="btn btn-link" src="app/img/back.png" onClick={this.mountProjectDetails.bind(this)}>Back</button> */}
+                            <ProjectDetails /> 
+                        </div> :
+                        <ReactTable
+                            data={data}
+                            columns={getColumns(this)}
+                            defaultPageSize={10}
+                            className="-striped -highlight"
+                            SubComponent={row => {
+                                return (
+                                    <div style={{ padding: "10px" }}>
+                                        <ReactTable
+                                            filterable
+                                            data={data}
+                                            columns={getColumns(this)}
+                                            showPagination={false}
+                                            defaultPageSize={2}
+                                            className="-striped -highlight"
+                                        />
+                                    </div>
+                                );
+                            }}
+                        />
+                    }
                     <br />
                 </div>
-                {projectDetailsCmp}
+                
             </div>
         );
     }

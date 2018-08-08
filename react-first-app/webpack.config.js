@@ -19,6 +19,9 @@ var config = {
         ]),
         new CopyWebpackPlugin([
             { from: 'src/css/sticky-footer-navbar.css', to: '../app/css/sticky-footer-navbar.css' }
+        ]),
+        new CopyWebpackPlugin([
+            { from: 'src/img/back.png', to: '../app/img/back.png' }
         ])
     ],
     module: {
