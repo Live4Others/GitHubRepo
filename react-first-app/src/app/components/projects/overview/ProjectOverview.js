@@ -1,11 +1,11 @@
-    import React from "react";
+import React from "react";
 import ReactDOM from 'react-dom';
 import Graph from 'vis-react';
 import "vis-react/node_modules/vis/dist/vis.css";
 
 var graph = {
     nodes: [
-        {id: 1, label: 'Node 1', cid:1, group: 'users'},
+        {id: 1, label: 'Node 1', cid:1, group: 'users', title:'<button>1</button>'},
         {id: 2, label: 'Node 2', cid:1, group: 'users'},
         {id: 3, label: 'Node 3', group: 'users'},
         {id: 4, label: 'Node 4', group: 'users'},

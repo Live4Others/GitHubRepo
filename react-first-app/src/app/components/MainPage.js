@@ -3,8 +3,8 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { Home } from "./Home";
-import { Projects } from "./Projects";
-import { ProjectDetails } from "./ProjectDetails";
+import { Projects } from "./projects/Projects";
+import { ProjectDetails } from "./projects/projectDetails/ProjectDetails";
 
 export class MainPage extends React.Component {
     constructor(props) {

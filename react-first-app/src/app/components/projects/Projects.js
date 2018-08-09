@@ -1,7 +1,7 @@
 import React from "react";
 
 import ReactTable from "react-table";
-import {ProjectDetails} from "./ProjectDetails";
+import {ProjectDetails} from "./projectDetails/ProjectDetails";
 import "react-table/react-table.css";
 
 function getColumns(project) { 

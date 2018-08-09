@@ -1,6 +1,10 @@
 import React from "react";
 import {Tabs, Tab,TabList, TabPanel} from 'react-tabs';
-import  { ProjectOverview } from "./ProjectOverview";
+import  { ProjectOverview } from "../overview/ProjectOverview";
+import  { ActivityDetails } from "../activityDetails/ActivityDetails";
+import  { ProjectStoreDetails } from "../projectStoreDetails/ProjectStoreDetails";
+import  { ProjectHierarchy } from "../projectHierarchy/ProjectHierarchy";
+
 import "react-tabs/style/react-tabs.css";
 
 export class ProjectDetails extends React.Component {
@@ -18,7 +22,7 @@ export class ProjectDetails extends React.Component {
                 <Tabs >
                     <TabList >
                         <Tab>Overview</Tab>
-                        <Tab>Current Activities</Tab>
+                        <Tab>Activity Details</Tab>
                         <Tab>Project Store</Tab>
                         <Tab>Hierarchy</Tab>
                     </TabList>
@@ -26,13 +30,13 @@ export class ProjectDetails extends React.Component {
                         <ProjectOverview />
                     </TabPanel>
                     <TabPanel>
-                        Current plan of activities and actions that can be taken here
+                        <ActivityDetails/>
                     </TabPanel>
                     <TabPanel>
-                        Here project store attribute will be visible & user will be able to create and update attributes
+                        <ProjectStoreDetails/>
                     </TabPanel>
                     <TabPanel>
-                        Here project hierarchy tree will be shown
+                        <ProjectHierarchy />
                     </TabPanel>
                 </Tabs>
             </div>
