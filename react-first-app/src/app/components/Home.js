@@ -1,5 +1,6 @@
 import React from "react";
 import propTypes from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.css';
 
 export class Home extends React.Component {
     constructor (props) {

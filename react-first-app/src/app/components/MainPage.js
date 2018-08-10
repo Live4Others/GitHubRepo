@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Home } from "./Home";
 import { Projects } from "./projects/Projects";
 import { ProjectDetails } from "./projects/projectDetails/ProjectDetails";
+import 'bootstrap/dist/css/bootstrap.css';
 
 export class MainPage extends React.Component {
     constructor(props) {

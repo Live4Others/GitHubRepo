@@ -5,6 +5,7 @@ import  { ActivityDetails } from "../activityDetails/ActivityDetails";
 import  { ProjectStoreDetails } from "../projectStoreDetails/ProjectStoreDetails";
 import  { ProjectHierarchy } from "../projectHierarchy/ProjectHierarchy";
 
+import 'bootstrap/dist/css/bootstrap.css';
 import "react-tabs/style/react-tabs.css";
 
 export class ProjectDetails extends React.Component {

@@ -3,6 +3,7 @@ import React from "react";
 import ReactTable from "react-table";
 import {ProjectDetails} from "./projectDetails/ProjectDetails";
 import "react-table/react-table.css";
+import 'bootstrap/dist/css/bootstrap.css';
 
 function getColumns(project) { 
     return [{
@@ -107,7 +108,6 @@ export class Projects extends React.Component {
                         this.state.mountProjectDetails? 
                         <div className="container">
                             <img className="btn" src="app/img/back.png" onClick={this.mountProjectDetails.bind(this)}></img>
-                            {/* <button className="btn btn-link" src="app/img/back.png" onClick={this.mountProjectDetails.bind(this)}>Back</button> */}
                             <ProjectDetails /> 
                         </div> :
                         <ReactTable

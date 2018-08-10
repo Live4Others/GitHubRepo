@@ -1,5 +1,5 @@
 import React from "react";
-
+import 'bootstrap/dist/css/bootstrap.css';
 export const FooterStateless = (props) => {
     return (
         <footer className="footer">
