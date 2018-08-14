@@ -6,14 +6,30 @@ import { MainPage } from "./components/MainPage";
 import 'bootstrap/dist/css/bootstrap.css';
 
 class Index extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            existingUser: false
+        }
+    }
     render() {
         return(
             <div>
-                <Header/>
-                <hr/>
-                <MainPage/>
-                <FooterStateless copyrightLink="http://live4others.com" />
+                {
+                    !this.state.existingUser ?
+                    <div>
+                        <Header/>
+                        <hr/>
+                        <MainPage/>
+                        <FooterStateless copyrightLink="http://live4others.com" />
+                    </div>
+                    :
+                    <div>
+                        You are coming for the first time, lets do some configurations first
+                    </div>
+                }
             </div>
+            
         );
     }
 }

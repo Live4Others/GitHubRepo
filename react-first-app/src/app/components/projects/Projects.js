@@ -9,6 +9,16 @@ function getColumns(project) {
     return [{
         Header: "Project",
         columns: [{
+            Header: "",
+            accessor: "",
+            expander: true,
+            Expander: ({ isExpanded, ...rest }) =>
+            <div>
+                {isExpanded
+                ? <span>&#x2299;</span>
+                : <span>&#x2295;</span>}
+            </div>,
+        }, {
             Header: "Name",
             accessor: "name"
         }, {
@@ -49,6 +59,9 @@ function getColumns(project) {
         }]
     }];
 }
+
+var counter = 0;
+
 export class Projects extends React.Component {
 
     constructor (props) {
@@ -56,6 +69,46 @@ export class Projects extends React.Component {
         this.state = {
             mountProjectDetails: false
         }
+    }
+
+    createSubComponent(row, currentObject) {
+        counter ++;
+        var data = [{
+            name:"Sales",
+            id: "Project1",
+            plan: 12345,
+            parent: "-",
+            status: "In Progress",
+            orderId: 1,
+            start: "03/08/2018",
+            complete: "-"
+        }, {
+            name:"Site",
+            id: "Project2",
+            plan: 54321,
+            parent: "Project1",
+            status: "Completed",
+            orderId: 2,
+            start: "03/08/2018",
+            complete: "04/08/2018"
+        }];
+        return (
+            <div className="container">
+                {
+                    counter <= 3? 
+                    <ReactTable
+                        filterable
+                        data={data}
+                        columns={getColumns(currentObject)}
+                        showPagination={false}
+                        defaultPageSize={2}
+                        className="-striped -highlight"
+                        SubComponent={(row) => currentObject.createSubComponent(row, currentObject)}
+                    /> : 
+                    <div>No more subchilds present....</div>
+                }
+            </div>
+        );
     }
 
     mountProjectDetails(event) {
@@ -76,6 +129,28 @@ export class Projects extends React.Component {
                 }
             }
         });
+    }
+
+    getData() {
+        return [{
+            name:"Sales",
+            id: "Project1",
+            plan: 12345,
+            parent: "-",
+            status: "In Progress",
+            orderId: 1,
+            start: "03/08/2018",
+            complete: "-"
+        }, {
+            name:"Site",
+            id: "Project2",
+            plan: 54321,
+            parent: "Project1",
+            status: "Completed",
+            orderId: 2,
+            start: "03/08/2018",
+            complete: "04/08/2018"
+        }];
     }
 
     render() {
@@ -111,24 +186,11 @@ export class Projects extends React.Component {
                             <ProjectDetails /> 
                         </div> :
                         <ReactTable
-                            data={data}
+                            data={this.getData(this)}
                             columns={getColumns(this)}
                             defaultPageSize={10}
                             className="-striped -highlight"
-                            SubComponent={row => {
-                                return (
-                                    <div style={{ padding: "10px" }}>
-                                        <ReactTable
-                                            filterable
-                                            data={data}
-                                            columns={getColumns(this)}
-                                            showPagination={false}
-                                            defaultPageSize={2}
-                                            className="-striped -highlight"
-                                        />
-                                    </div>
-                                );
-                            }}
+                            SubComponent={(row) => this.createSubComponent(row, this)}
                         />
                     }
                     <br />
