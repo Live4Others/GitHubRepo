@@ -11,13 +11,7 @@ function getColumns(project) {
         columns: [{
             Header: "",
             accessor: "",
-            expander: true,
-            Expander: ({ isExpanded, ...rest }) =>
-            <div>
-                {isExpanded
-                ? <span>&#x2299;</span>
-                : <span>&#x2295;</span>}
-            </div>,
+            expander: true
         }, {
             Header: "Name",
             accessor: "name"

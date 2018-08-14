@@ -1,7 +1,6 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import Graph from 'vis-react';
-import "vis-react/node_modules/vis/dist/vis.css";
+import "vis/dist/vis.css";
 import 'bootstrap/dist/css/bootstrap.css';
 
 var graph = {

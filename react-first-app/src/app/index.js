@@ -3,7 +3,9 @@ import { render } from "react-dom";
 import { Header } from "./components/Header";
 import { FooterStateless } from "./components/FooterStateless";
 import { MainPage } from "./components/MainPage";
+import FirstTimePopUp from "./components/environment/setup/FirstTimePopUp"
 import 'bootstrap/dist/css/bootstrap.css';
+
 
 class Index extends React.Component {
     constructor() {
@@ -16,7 +18,7 @@ class Index extends React.Component {
         return(
             <div>
                 {
-                    !this.state.existingUser ?
+                    this.state.existingUser ?
                     <div>
                         <Header/>
                         <hr/>
@@ -24,9 +26,7 @@ class Index extends React.Component {
                         <FooterStateless copyrightLink="http://live4others.com" />
                     </div>
                     :
-                    <div>
-                        You are coming for the first time, lets do some configurations first
-                    </div>
+                    <FirstTimePopUp />
                 }
             </div>
             
