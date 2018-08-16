@@ -9,7 +9,7 @@ app.get('/listUsers', function (req, res) {
       if(data && data == '') {
         data = {}
       }
-      res.end(JSON.stringify(data));
+      res.end(data);
    });
 });
 
