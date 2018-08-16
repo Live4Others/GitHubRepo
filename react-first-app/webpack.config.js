@@ -25,6 +25,12 @@ var config = {
         ]),
         new CopyWebpackPlugin([
             { from: 'src/img/back.png', to: '../app/img/back.png' }
+        ]),
+        new CopyWebpackPlugin([
+            { from: 'src/img/loading.gif', to: '../app/img/loading.gif' }
+        ]),
+        new CopyWebpackPlugin([
+            { from: 'src/environments.json', to: '../app/environments.json' }
         ])
     ],
     module: {

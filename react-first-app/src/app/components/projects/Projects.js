@@ -112,6 +112,20 @@ export class Projects extends React.Component {
     }
 
     fetchOrderDetails(event) {
+        // TODO: try to find a better option for shoring context store using the react pop
+        // render() {
+        //     return <p>
+        //         Here are your options:
+        //         <TriggeredModalForm trigger={
+        //             <strong>Options</strong>
+        //         } required onSubmit={this.handleSubmit}>
+        //         <p>No way out until you choose.</p>
+        //         <ul>
+        //           <li><button type="submit">You must choose me.</button></li>
+        //         </ul>
+        //       </TriggeredModalForm>
+        //     </p>;
+        // }
         var contextStoreElement = $("#contextStore");
         contextStoreElement[0].style.display='block';
         contextStoreElement[0].innerHTML = 'hey this is me';
