@@ -1,0 +1,114 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+  box-sizing: none;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+button {
+  cursor: pointer;
+}
+
+@keyframes underlay-fade {
+  0% {
+    background: rgba(127, 127, 127, 0);
+  }
+
+  100% {
+    background: rgba(127, 127, 127, 0.2);
+  }
+}
+
+svg {
+  overflow: hidden;
+}
+
+.modal-form-underlay {
+  animation: underlay-fade 0.5s;
+  background: rgba(127, 127, 127, 0.2);
+}
+
+.modal-form-pointer {
+  background: #369;
+  height: 1em;
+  margin: 0.5em 0 0 0.5em;
+  transform: rotate(45deg);
+  width: 1em;
+  z-index: -1
+}
+
+.modal-form {
+  background: white;
+  border: 2px solid #369;
+  box-shadow: 0 5px 20px -5px black;
+  color: black;
+  margin: 1em;
+  padding: 0 1em;
+  width: max-content;
+}
+
+.outside-viewport {
+  border: dotted black 1px;
+}
+
+.my-loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 100%;
+  border-top: 16px solid #bbbbbb;
+  width: 240px;
+  height: 240px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+.my-center {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

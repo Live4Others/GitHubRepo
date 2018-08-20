@@ -1,5 +1,6 @@
 var path = require("path");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var webpack = require('webpack');
 
 // creating the dist folder here
 var DIST_DIR = path.resolve(__dirname, "dist");
@@ -21,9 +22,6 @@ var config = {
             { from: 'src/index.html', to: '../app/index.html' }
         ]),
         new CopyWebpackPlugin([
-            { from: 'src/css/sticky-footer-navbar.css', to: '../app/css/sticky-footer-navbar.css' }
-        ]),
-        new CopyWebpackPlugin([
             { from: 'src/img/back.png', to: '../app/img/back.png' }
         ]),
         new CopyWebpackPlugin([
@@ -31,7 +29,12 @@ var config = {
         ]),
         new CopyWebpackPlugin([
             { from: 'src/environments.json', to: '../app/environments.json' }
-        ])
+        ]),
+        new webpack.ProvidePlugin({
+            '$': "jquery",
+            'jQuery': "jquery",
+            'Popper': 'popper.js'
+        })
     ],
     module: {
         rules: [{
@@ -75,4 +78,5 @@ var config = {
         }]
     }
 };
+
 module.exports = config;
