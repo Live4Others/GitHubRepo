@@ -14,15 +14,15 @@ class Index extends React.Component {
             showLoading: true
         }
 
-        var environments = new EnvironmentUtils().fetch();
-        environments.then((data) => {
-            setTimeout(() => {
-                this.setState({
-                    existingUser: (!!data) ? true:false, 
-                    showLoading: false,
-                })
-            }, 1500);
-        })
+        // var environments = new EnvironmentUtils().fetch();
+        // environments.then((data) => {
+        //     setTimeout(() => {
+        //         this.setState({
+        //             existingUser: (!!data) ? true:false, 
+        //             showLoading: false,
+        //         })
+        //     }, 1500);
+        // })
         
 
     }
@@ -30,13 +30,13 @@ class Index extends React.Component {
         return(
             <div>
                 {
-                    this.state.showLoading ? 
+                    !this.state.showLoading ? 
                         <div >
                             <div className="my-loader my-center"></div>
                             <img className="my-center" src='./img/please-wait-1.gif' />
                         </div>
                         :
-                        this.state.existingUser ?
+                        !this.state.existingUser ?
                         <div>
                             <Header/>
                             <hr/>

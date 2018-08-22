@@ -5,55 +5,6 @@ import {ProjectDetails} from "./projectDetails/ProjectDetails";
 import "react-table/react-table.css";
 import 'bootstrap/dist/css/bootstrap.css';
 
-function getColumns(project) { 
-    return [{
-        Header: "Project",
-        columns: [{
-            Header: "",
-            accessor: "",
-            expander: true
-        }, {
-            Header: "Name",
-            accessor: "name"
-        }, {
-            Header: "Id",
-            accessor: "id",
-            Cell: cellInfo => (
-                <button className="btn" onClick={() => project.mountProjectDetails()}>
-                    {cellInfo.row.id}
-                </button>
-            )
-        }, {
-            Header: "Parent Project",
-            accessor: "parent",
-        }, {
-            Header: "Plan",
-            accessor: "plan",
-        }]
-    }, {
-        Header: "Main Attributes",
-        columns: [{
-            Header: "OrderId",
-            accessor: "orderId",
-            Cell: cellInfo => (
-                <button className="btn" onClick={() => project.fetchOrderDetails()}>{cellInfo.row.orderId}</button>
-            )
-        }]
-    }, {
-        Header: "Additional Info",
-        columns: [{
-            Header: "Status",
-            accessor: "status"
-        }, {
-            Header: "Started",
-            accessor: "start"
-        }, {
-            Header: "Completed",
-            accessor: "complete"
-        }]
-    }];
-}
-
 var counter = 0;
 
 export class Projects extends React.Component {
@@ -61,8 +12,21 @@ export class Projects extends React.Component {
     constructor (props) {
         super();
         this.state = {
-            mountProjectDetails: false
+            mountProjectDetails: false,
         }
+    }
+
+    expandRows() {
+        this.setState({
+            expanded : { 
+                0: true,
+                0: {
+                    0: true,
+                    1: true
+                }
+            }
+        });
+        counter = 0;
     }
 
     createSubComponent(row, currentObject) {
@@ -91,12 +55,25 @@ export class Projects extends React.Component {
                 {
                     counter <= 3? 
                     <ReactTable
+                        expanded={this.state.expanded}
                         filterable
                         data={data}
-                        columns={getColumns(currentObject)}
+                        columns={this.getColumns(currentObject)}
                         showPagination={false}
-                        defaultPageSize={2}
+                        defaultPageSize={data.length}
                         className="-striped -highlight"
+                        getTdProps={(state, rowInfo, column, instance) => {
+                            return {
+                              onClick: (e, handleOriginal) => {
+                                if(column.Header === 'All') {
+                                    //handleOriginal();
+                                    this.expandRows();
+                                } else {
+                                    handleOriginal();
+                                }
+                              }
+                            };
+                        }}
                         SubComponent={(row) => currentObject.createSubComponent(row, currentObject)}
                     /> : 
                     <div>No more subchilds present....</div>
@@ -137,6 +114,66 @@ export class Projects extends React.Component {
                 }
             }
         });
+    }
+
+    getColumns(project) { 
+        return [{
+            Header: "Project",
+            columns: [{
+                Header: "",
+                accessor: "",
+                expander: true,
+            }, {
+                Header: "All",
+                accessor: "",
+                expander: true,
+                Expander: ({ isExpanded, ...rest }) =>
+                    <div>
+                        {isExpanded
+                        ? <span>&#x2299;</span>
+                        : <span>&#x2295;</span>}
+                    </div>
+                
+            }, {
+                Header: "Name",
+                accessor: "name"
+            }, {
+                Header: "Id",
+                accessor: "id",
+                Cell: cellInfo => (
+                    <button className="btn" onClick={() => project.mountProjectDetails()}>
+                        {cellInfo.row.id}
+                    </button>
+                )
+            }, {
+                Header: "Parent Project",
+                accessor: "parent",
+            }, {
+                Header: "Plan",
+                accessor: "plan",
+            }]
+        }, {
+            Header: "Main Attributes",
+            columns: [{
+                Header: "OrderId",
+                accessor: "orderId",
+                Cell: cellInfo => (
+                    <button className="btn" onClick={() => project.fetchOrderDetails()}>{cellInfo.row.orderId}</button>
+                )
+            }]
+        }, {
+            Header: "Additional Info",
+            columns: [{
+                Header: "Status",
+                accessor: "status"
+            }, {
+                Header: "Started",
+                accessor: "start"
+            }, {
+                Header: "Completed",
+                accessor: "complete"
+            }]
+        }];
     }
 
     getData() {
@@ -195,9 +232,40 @@ export class Projects extends React.Component {
                         </div> :
                         <ReactTable
                             data={this.getData(this)}
-                            columns={getColumns(this)}
-                            defaultPageSize={10}
+                            expanded={this.state.expanded}
+                            columns={this.getColumns(this)}
+                            defaultPageSize={data.length}
                             className="-striped -highlight"
+                            getTdProps={(state, rowInfo, column, instance) => {
+                                return {
+                                  onClick: (e, handleOriginal) => {
+                                    console.log("A Td Element was clicked!");
+                                    console.log("it produced this event:", e);
+                                    console.log("It was in this column:", column);
+                                    console.log("It was in this row:", rowInfo);
+                                    console.log("It was in this table instance:", instance);
+                                    
+                                    // instance.setState({
+                                    //     expanded: {
+                                    //         [rowInfo.index]: !instance.state.expanded[rowInfo.index]
+                                    //     }
+                                    // });
+
+                                    console.log("It was in this table instance:", instance);
+                                    // IMPORTANT! React-Table uses onClick internally to trigger
+                                    // events like expanding SubComponents and pivots.
+                                    // By default a custom 'onClick' handler will override this functionality.
+                                    // If you want to fire the original onClick handler, call the
+                                    // 'handleOriginal' function.
+                                    if(column.Header === 'All') {
+                                        //handleOriginal();
+                                        this.expandRows();
+                                    } else {
+                                        handleOriginal();
+                                    }
+                                  }
+                                };
+                            }}
                             SubComponent={(row) => this.createSubComponent(row, this)}
                         />
                     }
