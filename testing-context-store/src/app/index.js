@@ -1,5 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
+import { Order } from './order';
 
 class Index extends React.Component {
     render() {
@@ -8,20 +9,14 @@ class Index extends React.Component {
                   <nav className="navbar navbar-default">
                     <div className="container-fluid">
                     <div className="navbar-header">
-                        <a className="navbar-brand" href="#">WebSiteName</a>
+                        <h3>Welcome to the context store application</h3>
                     </div>
-                    <ul className="nav navbar-nav">
-                        <li className="active"><a href="#">Home</a></li>
-                        <li><a href="#">Page 1</a></li>
-                        <li><a href="#">Page 2</a></li>
-                        <li><a href="#">Page 3</a></li>
-                    </ul>
                     </div>
                 </nav>
                 <div className="container-fluid">
                     <div className="row content">
                         <div className="col-sm-3 sidenav">
-                            Nav Bar
+                            <Order ></Order>
                         </div>
                         <div className="col-sm-9">
                             Right side panel

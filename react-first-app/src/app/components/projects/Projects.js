@@ -112,7 +112,7 @@ export class Projects extends React.Component {
     }
 
     fetchOrderDetails(event) {
-        // TODO: try to find a better option for shoring context store using the react pop
+        // TODO: try to find a better option for showing context store using the react pop
         // render() {
         //     return <p>
         //         Here are your options:
