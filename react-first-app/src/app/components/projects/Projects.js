@@ -56,12 +56,12 @@ export class Projects extends React.Component {
                     counter <= 3? 
                     <ReactTable
                         expanded={this.state.expanded}
-                        filterable
                         data={data}
                         columns={this.getColumns(currentObject)}
                         showPagination={false}
                         defaultPageSize={data.length}
                         className="-striped -highlight"
+                        getTheadThProps={this.injectThProps}
                         getTdProps={(state, rowInfo, column, instance) => {
                             return {
                               onClick: (e, handleOriginal) => {
@@ -82,10 +82,11 @@ export class Projects extends React.Component {
         );
     }
 
-    mountProjectDetails(event) {
-        this.setState({
-            mountProjectDetails: !this.state.mountProjectDetails
-        });
+    mountProjectDetails(projectId) {
+        window.open('https://inostbb074.corp.amdocs.com:8443/dop/projects.html#Projects/#!/ProjectDetails/'+projectId);
+        // this.setState({
+        //     mountProjectDetails: !this.state.mountProjectDetails
+        // });
     }
 
     fetchOrderDetails(event) {
@@ -116,9 +117,15 @@ export class Projects extends React.Component {
         });
     }
 
+    injectThProps = (state, rowInfo, column) => {
+        return {
+            style: { display: 'none' }
+        }
+    }
+
     getColumns(project) { 
         return [{
-            Header: "Project",
+            //Header: "Project",
             columns: [{
                 Header: "",
                 accessor: "",
@@ -141,7 +148,7 @@ export class Projects extends React.Component {
                 Header: "Id",
                 accessor: "id",
                 Cell: cellInfo => (
-                    <button className="btn" onClick={() => project.mountProjectDetails()}>
+                    <button className="btn" >
                         {cellInfo.row.id}
                     </button>
                 )
@@ -153,7 +160,7 @@ export class Projects extends React.Component {
                 accessor: "plan",
             }]
         }, {
-            Header: "Main Attributes",
+            //Header: "Main Attributes",
             columns: [{
                 Header: "OrderId",
                 accessor: "orderId",
@@ -162,7 +169,7 @@ export class Projects extends React.Component {
                 )
             }]
         }, {
-            Header: "Additional Info",
+            //Header: "Additional Info",
             columns: [{
                 Header: "Status",
                 accessor: "status"
@@ -179,7 +186,7 @@ export class Projects extends React.Component {
     getData() {
         return [{
             name:"Sales",
-            id: "Project1",
+            id: "Project3050",
             plan: 12345,
             parent: "-",
             status: "In Progress",
@@ -188,7 +195,7 @@ export class Projects extends React.Component {
             complete: "-"
         }, {
             name:"Site",
-            id: "Project2",
+            id: "Project3118",
             plan: 54321,
             parent: "Project1",
             status: "Completed",
@@ -201,7 +208,7 @@ export class Projects extends React.Component {
     render() {
         var data = [{
             name:"Sales",
-            id: "Project1",
+            id: "Project1964",
             plan: 12345,
             parent: "-",
             status: "In Progress",
@@ -210,7 +217,7 @@ export class Projects extends React.Component {
             complete: "-"
         }, {
             name:"Site",
-            id: "Project2",
+            id: "Project2983",
             plan: 54321,
             parent: "Project1",
             status: "Completed",
@@ -257,7 +264,9 @@ export class Projects extends React.Component {
                                     // By default a custom 'onClick' handler will override this functionality.
                                     // If you want to fire the original onClick handler, call the
                                     // 'handleOriginal' function.
-                                    if(column.Header === 'All') {
+                                    if(column.Header == 'Id') {
+                                        this.mountProjectDetails(rowInfo.row.id);
+                                    } else if(column.Header === 'All') {
                                         //handleOriginal();
                                         this.expandRows();
                                     } else {

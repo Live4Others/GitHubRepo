@@ -7,12 +7,22 @@ import { FirstTimePopUp } from "./components/environment/setup/FirstTimePopUp";
 import { EnvironmentUtils } from "./components/environment/EnvironmentUtils";
 
 class Index extends React.Component {
+
+    indexComponent(value) {
+        setTimeout(() => {
+            this.setState({
+                existingUser: true
+            })
+        }, 1500);
+    }
+
     constructor() {
         super();
         this.state = {
             existingUser: false,
             showLoading: true
         }
+
 
         // var environments = new EnvironmentUtils().fetch();
         // environments.then((data) => {
@@ -36,7 +46,7 @@ class Index extends React.Component {
                             <img className="my-center" src='./img/please-wait-1.gif' />
                         </div>
                         :
-                        !this.state.existingUser ?
+                        this.state.existingUser ?
                         <div>
                             <Header/>
                             <hr/>
@@ -44,7 +54,7 @@ class Index extends React.Component {
                             <FooterStateless copyrightLink="http://live4others.com" />
                         </div>
                         :
-                        <FirstTimePopUp />
+                        <FirstTimePopUp indexComponent={this.indexComponent.bind(this)}/>
                 }
             </div>
             

@@ -5,9 +5,9 @@ import { FooterStateless } from "../../FooterStateless";
 
 export class FirstTimePopUp extends React.Component {
     constructor(props) {
-        super(props);
-    
-        this.state = { isOpen: false };
+          super(props);
+          this.indexComponent = props.indexComponent;
+          this.state = { isOpen: false };
       }
     
       openPopup = () => {
@@ -25,7 +25,7 @@ export class FirstTimePopUp extends React.Component {
       render() {
         return (
           <div>
-            <EnvironmentForm onClose={this.closePopup}> </EnvironmentForm>
+            <EnvironmentForm indexComponent={this.indexComponent} onClose={this.closePopup}> </EnvironmentForm>
             <FooterStateless copyrightLink="http://live4others.com" />
           </div>
         );

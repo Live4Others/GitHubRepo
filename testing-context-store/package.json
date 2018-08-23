@@ -14,6 +14,7 @@
     "babel-core": "^6.26.3",
     "bootstrap": "^4.1.3",
     "bootstrap-loader": "^3.0.1",
+    "bower": "^1.8.4",
     "browserify-fs": "^1.0.0",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
@@ -30,8 +31,10 @@
     "react-story": "^1.4.7",
     "react-table": "^6.8.6",
     "react-tabs": "^2.2.2",
+    "react-treeview": "^0.4.7",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.21.0",
+    "treeview-react-bootstrap": "^0.4.6",
     "url-loader": "^1.0.1",
     "webpack-cli": "^3.1.0"
   },

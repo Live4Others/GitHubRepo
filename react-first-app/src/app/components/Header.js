@@ -3,28 +3,21 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 
 export class Header extends React.Component {
+
     constructor() {
         super();
         this.state = {
-            searchValue: "",
             toDashboard: false,
+            environment: 'Select an Environment',
         }
-        this.searchProject = this.searchProject.bind(this);
-        this.upateSearchValue = this.upateSearchValue.bind(this);
     }
 
-    searchProject(event) {
+    changeEnvironment(event) {
         this.setState({
-            searchValue: event.target.value
+            environment: event.target.value
         });
-        this.props.history.push('/projectDetails');
     }
-
-    upateSearchValue(event) {
-        this.setState({
-            searchValue: event.target.value
-        })
-    }
+   
 
     render() {
         return (
@@ -43,8 +36,12 @@ export class Header extends React.Component {
                             </li>
                         </ul>
                         <div className="column form-inline my-2 my-lg-0">
-                            <input className="form-control mr-sm-2" type="search" placeholder="Search" value={this.state.searchValue} onChange={this.upateSearchValue}/>
-                            <button className="btn btn-outline-success my-2 my-sm-0" type="button" onClick={this.searchProject}>Search</button>
+                            <select className="form-control" value={this.state.environment} onChange={this.changeEnvironment.bind(this)}>
+                            <option value="select">Select an Environment</option>
+                            <option value="First">First</option>
+                            <option value="Second">Second</option>
+                            <option value="Third">Third</option>
+                            </select>
                         </div>
                     </div>
                 </nav>
