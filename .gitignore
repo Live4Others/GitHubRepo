@@ -61,3 +61,4 @@ typings/
 .next
 react-first-app/package-lock.json
 react-first-app/package-lock.json
+react-first-app/dist/app/bundle.js

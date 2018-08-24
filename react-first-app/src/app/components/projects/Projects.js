@@ -84,6 +84,7 @@ export class Projects extends React.Component {
 
     mountProjectDetails(projectId) {
         window.open('https://inostbb074.corp.amdocs.com:8443/dop/projects.html#Projects/#!/ProjectDetails/'+projectId);
+        //window.open('https://inostbb074.corp.amdocs.com:8443/dop/projects.html#Projects/#!/ProjectDetails/'+projectId, "_self");
         // this.setState({
         //     mountProjectDetails: !this.state.mountProjectDetails
         // });

@@ -46,7 +46,7 @@ class Index extends React.Component {
                             <img className="my-center" src='./img/please-wait-1.gif' />
                         </div>
                         :
-                        this.state.existingUser ?
+                        !this.state.existingUser ?
                         <div>
                             <Header/>
                             <hr/>
