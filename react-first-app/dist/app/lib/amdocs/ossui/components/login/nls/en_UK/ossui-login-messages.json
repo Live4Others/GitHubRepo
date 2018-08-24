@@ -1,0 +1,14 @@
+{
+    "messages": {
+        "ossui.errorMessages.login.unauthorized": "Wrong Login Credentials",
+        "ossui.errorMessages.login.badrequest": "Invalid request format",
+        "ossui.errorMessages.login.service.unavailable": "Login Service Unavailable",
+        "ossui.errorMessages.login.server.internalerror": "Internal Server Error",
+        "ossui.errorMessages.login.server.generalerror": "General Error",
+        "ossui.labels.login.username":"User Name",
+        "ossui.labels.login.password":"Password",
+        "ossui.labels.heading.login":"User Login",
+        "ossui.labels.button.submitString" : "Submit",
+        "ossui.labels.button.cancelString" : "Cancel"
+    }
+}

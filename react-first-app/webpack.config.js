@@ -31,6 +31,9 @@ var config = {
         ]),
         new CopyWebpackPlugin([
             { from: 'src/environments.json', to: '../app/environments.json' }
+        ]),
+        new CopyWebpackPlugin([
+            { from: 'src/lib', to: '../app/lib' }
         ])
     ],
     module: {

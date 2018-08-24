@@ -1,0 +1,14 @@
+{
+    "messages": {
+        "ossui.errorMessages.login.unauthorized": "Неверный пароль/имя пользователя",
+        "ossui.errorMessages.login.badrequest": "Неверный формат запроса",
+        "ossui.errorMessages.login.service.unavailable": "Сервис не работает",
+        "ossui.errorMessages.login.server.internalerror": "Внутренняя ошибка сервера",
+        "ossui.errorMessages.login.server.generalerror": "Общая ошибка",		
+        "ossui.labels.login.username":"Имя Пользователя",
+        "ossui.labels.login.password":"Пароль",
+        "ossui.labels.button.submitString" : "Войти",
+        "ossui.labels.button.cancelString" : "Отменить",
+        "ossui.labels.heading.login":"Вход"
+    }
+}

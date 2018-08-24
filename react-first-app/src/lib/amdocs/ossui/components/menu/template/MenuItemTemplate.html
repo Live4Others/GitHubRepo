@@ -1,0 +1,17 @@
+<li oss-ui-menu-item-id="<%=menuItemId%>">
+	<div
+	<% if(typeof(icon)!='undefined'){ %>
+		class="ui-item-icon <%=icon%> <%=iconalign%>"
+	<%} else{%>
+		class="ui-item-icon <%=iconalign%>" style='background-image:none;'
+	<%} %>
+	></div>
+	<a href=
+	<% if(typeof(url)!='undefined'){ %>
+		"<%=url%>" 
+	<%} else{%>
+		'#'
+	<%} %>
+	class='<%=itemtextalign%>'><%=name%></a>
+
+</li>

@@ -1,10 +1,9 @@
 import React from "react";
-
 import ReactTable from "react-table";
+import Messaging from '../../../lib/amdocs/ossui/ossui-messaging';
 import {ProjectDetails} from "./projectDetails/ProjectDetails";
 import "react-table/react-table.css";
 import 'bootstrap/dist/css/bootstrap.css';
-
 var counter = 0;
 
 export class Projects extends React.Component {
@@ -83,11 +82,13 @@ export class Projects extends React.Component {
     }
 
     mountProjectDetails(projectId) {
-        window.open('https://inostbb074.corp.amdocs.com:8443/dop/projects.html#Projects/#!/ProjectDetails/'+projectId);
-        //window.open('https://inostbb074.corp.amdocs.com:8443/dop/projects.html#Projects/#!/ProjectDetails/'+projectId, "_self");
-        // this.setState({
-        //     mountProjectDetails: !this.state.mountProjectDetails
-        // });
+        
+        var options = {
+            targetUrl : Messaging.messageUtils.getTargetUrl(document.referrer),
+            targetWindow : window.parent
+        };
+        var messageServiceFactory = Messaging.messageServiceFactory.createMessageService(Messaging.constants.MODE_CLIENT, options);
+        messageServiceFactory.publish({applicationName: 'Projects', payload: {projectId: projectId} }, 'portal.displayApplication');
     }
 
     fetchOrderDetails(event) {
