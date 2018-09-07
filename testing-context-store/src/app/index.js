@@ -21,7 +21,6 @@ class Index extends React.Component {
                         <div className="col-sm-9">
                             Right side panel
                         </div>
-                        
                     </div>
                 </div>
 
