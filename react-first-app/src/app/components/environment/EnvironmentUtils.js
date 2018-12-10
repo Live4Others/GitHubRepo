@@ -21,7 +21,7 @@ export class EnvironmentUtils {
     }
 
     fetch() {
-        return fetch('http://localhost:8081/listUsers')
+        return fetch('http://localhost:8081/environments')
             .then(response => response.json());
     }
 

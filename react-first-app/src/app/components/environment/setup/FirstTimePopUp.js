@@ -7,7 +7,7 @@ export class FirstTimePopUp extends React.Component {
     constructor(props) {
           super(props);
           this.indexComponent = props.indexComponent;
-          this.state = { isOpen: false };
+          this.state = { isOpen: true };
       }
     
       openPopup = () => {

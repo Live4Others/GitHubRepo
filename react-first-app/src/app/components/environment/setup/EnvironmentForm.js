@@ -51,12 +51,13 @@ export class EnvironmentForm extends React.Component {
                 color: 'grey'
             },
             focus: {
-                borderColor: 'grey',
+                borderColor: 'black',
                 borderBottomWidth: 2,
             },
             input: {
                 borderBottomColor: 'black',
-                width: '95%'
+                width: '95%',
+                borderBottomWidth: 1,
             }
         };
 

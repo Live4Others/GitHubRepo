@@ -9,9 +9,10 @@ import { EnvironmentUtils } from "./components/environment/EnvironmentUtils";
 class Index extends React.Component {
 
     indexComponent(value) {
+        console.log("here in index.js file");
         setTimeout(() => {
             this.setState({
-                existingUser: true
+                existingUser: false
             })
         }, 1500);
     }
@@ -23,6 +24,16 @@ class Index extends React.Component {
             showLoading: true
         }
 
+        setTimeout(() => {
+            this.setState({
+                existingUser: false, 
+                showLoading: false,
+            })
+        }, 1500);
+
+        var environments = new EnvironmentUtils().fetch();
+
+        console.log("environment details :: " + environments);
 
         // var environments = new EnvironmentUtils().fetch();
         // environments.then((data) => {
@@ -40,7 +51,7 @@ class Index extends React.Component {
         return(
             <div>
                 {
-                    !this.state.showLoading ? 
+                    this.state.showLoading ? 
                         <div >
                             <div className="my-loader my-center"></div>
                             <img className="my-center" src='./img/please-wait-1.gif' />
